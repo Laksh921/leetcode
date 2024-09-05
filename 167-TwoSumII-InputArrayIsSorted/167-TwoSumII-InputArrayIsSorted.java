@@ -1,12 +1,21 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        for(int i = 0; i<numbers.length; i++){
-            for(int j = i+1; j<numbers.length; j++){
-                if(numbers[i] + numbers[j] == target){
-                    return new int[] {i+1,j+1};
-                }
+        int[] ans = new int[2];
+        int n = numbers.length;
+        int start=0;
+        int end = n-1;
+        while(start<end){
+            int sum = numbers[start] + numbers[end];
+            if(sum == target){
+                ans[0] = start+1;
+                ans[1]= end+1;
+                break;
+            }else if(sum > target){
+                end--;
+            }else{
+                start++;
             }
         }
-        throw new IllegalArgumentException("No two sum solution");
+        return ans;
     }
 }
