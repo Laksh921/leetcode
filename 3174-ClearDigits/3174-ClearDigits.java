@@ -1,13 +1,15 @@
 class Solution {
-    public long countBadPairs(int[] nums) {
-        long count = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i =0; i<nums.length; i++){
-            int diff = i - nums[i];
-            int gp = map.getOrDefault(diff , 0);
-            count = count + i - gp;
-            map.put(diff, gp + 1);
+    public String clearDigits(String s) {
+        StringBuilder res = new StringBuilder();
+        for(char c : s.toCharArray()){
+            if(Character.isDigit(c)){
+                if(res.length() > 0){
+                    res.deleteCharAt(res.length() - 1);
+                }
+            }else{
+                    res.append(c);
+                }
         }
-        return count;
+        return res.toString();
     }
 }
